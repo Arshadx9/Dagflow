@@ -7,6 +7,22 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+enum Status {
+  FINISHED 
+  FAILED 
+  PENDING 
+  RUNNING
+}
+
+enum ScheduleStatus{
+  PAUSED
+  ACTIVE
+}
+
+enum ApiStatus{
+  REVOKED
+  ACTIVE
+}
 
 model Bizowner{
   ownerId String @id @default(uuid()) 
@@ -14,6 +30,7 @@ model Bizowner{
   password String 
   createdAt DateTime @default(now())
   workflows WorkflowMain[]
+  apikey ApiKey[]
 }
 
 model WorkflowMain {
@@ -24,6 +41,8 @@ model WorkflowMain {
   isActive Boolean @default(true)
   createdAt DateTime @default(now())
   wfv WorkflowVersion[]
+  jb JobRun[]
+  step Schedule[]
 }
 
 model WorkflowVersion{
@@ -33,5 +52,52 @@ model WorkflowVersion{
   versionNumber Int
   createdAt DateTime @default(now())
   steps Json
+  jb JobRun[]
+ 
+}
 
+model JobRun {
+  jobid String @id @default(uuid())
+  workflowid String 
+  versionid String
+  wf WorkflowMain @relation(fields: [workflowid ], references: [wid])
+  wfvm WorkflowVersion @relation(fields: [ versionid ] , references: [versionid])
+  status Status 
+  starttime DateTime @default(now())
+  endtime DateTime?
+data Json
+steprun StepRun[]
+}
+
+model StepRun {
+  steprunid String @id @default(uuid())
+  jobid String 
+  jb JobRun @relation(fields: [jobid] , references: [jobid])
+  status Status
+  retries Int @default(0)
+  output Json?
+  error String?
+  starttime DateTime @default(now())
+  endtime DateTime?
+ stepid String
+
+}
+
+model Schedule{
+  scheduleid String @id @default(uuid())
+  workflowid String 
+  wf WorkflowMain @relation(fields: [workflowid], references: [wid])
+  cron String
+ schedulestatus ScheduleStatus @default(ACTIVE)
+ createdAt DateTime @default(now())
+ nextRunAt DateTime 
+}
+
+model ApiKey {
+  apikeyid String @id @default(uuid())
+  theapikey String @unique
+  bizid String
+  biz Bizowner @relation(fields: [bizid], references: [ownerId])
+  apikeystaus ApiStatus @default(ACTIVE)
+ createdAt DateTime @default(now())
 }
