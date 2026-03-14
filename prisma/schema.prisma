@@ -1,0 +1,37 @@
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Bizowner{
+  ownerId String @id @default(uuid()) 
+  username String @unique
+  password String 
+  createdAt DateTime @default(now())
+  workflows WorkflowMain[]
+}
+
+model WorkflowMain {
+  wid String @id @default(uuid())
+  name String 
+  creatorId String 
+  biz Bizowner @relation (fields: [creatorId] , references: [ownerId])
+  isActive Boolean @default(true)
+  createdAt DateTime @default(now())
+  wfv WorkflowVersion[]
+}
+
+model WorkflowVersion{
+  versionid String @id @default(uuid())
+  wfmid String
+  wf WorkflowMain @relation(fields: [wfmid], references: [wid])
+  versionNumber Int
+  createdAt DateTime @default(now())
+  steps Json
+
+}
