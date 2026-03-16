@@ -26,9 +26,9 @@ static generateToken (payload : object){
 
 static  verifyToken(token : string){
 
-const decodedobject = jwt.verify(token, config.jwt.secret )
+return jwt.verify(token, config.jwt.secret )
 
-return decodedobject
+
 
 }
 
