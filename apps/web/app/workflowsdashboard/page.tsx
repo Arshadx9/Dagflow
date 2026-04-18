@@ -46,6 +46,8 @@ const [error, setError] = useState<string | null>(null)
 
 
 
+
+
 useEffect(() => {
   const fetchworkflow = async () => {
     try {
@@ -95,7 +97,7 @@ return(
 
 
 {workflows.map((wf) => (
-  <div key={wf.wid} className="bg-gray-100 flex flex-col text-black p-4 gap-3 m-4 w-2xl border border-gray-500">
+  <div key={wf.wid} onClick={() => router.push(`/singleworkflow?id=${wf.wid}`)} className="bg-gray-100 flex flex-col text-black p-4 gap-3 m-4 w-2xl border border-gray-500">
   <div>Workflow name: {wf.name}</div>
   <div>Date: {formatDate(wf.createdAt)}</div>
   <div>Status: {wf.isActive ? "Active" : "Not Active"}</div>
