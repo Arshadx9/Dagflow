@@ -36,7 +36,7 @@ try{
 
         if (response.data?.success) {
             if (response.data.data.user?.hasOnboarded) {
-                router.push("/dashboard")
+                router.push("/workflowsdashboard")
             } else {
                 router.push("/onboarding")
             }
