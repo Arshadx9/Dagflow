@@ -29,8 +29,7 @@ const SingleWorkflowPage = ({ params }: { params: { id: string } }) => {
 
   useEffect(() => {
     const fetchWorkflow = async () => {
-      const response = await api.get(`/getworkflowbyid${params.id}`);
-      setWorkflow(response.data.data.workflow);
+const response = await api.get(`/api/workflow/getworkflowbyid/${params.id}`);      setWorkflow(response.data.data.workflow);
     };
     fetchWorkflow();
   }, [params.id]);
