@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 type Step = {
   id: string;
@@ -23,16 +23,20 @@ const api = axios.create({
   withCredentials: true,
 });
 
-const SingleWorkflowPage = ({ params }: { params: { id: string } }) => {
+const SingleWorkflowPage = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const id = searchParams.get('id');
   const [workflow, setWorkflow] = useState<Workflow | null>(null);
 
   useEffect(() => {
+    if (!id) return;
     const fetchWorkflow = async () => {
-const response = await api.get(`/api/workflow/getworkflowbyid/${params.id}`);      setWorkflow(response.data.data.workflow);
+      const response = await api.get(`/api/workflow/getworkflowbyid/${id}`);
+      setWorkflow(response.data.data.workflow);
     };
     fetchWorkflow();
-  }, [params.id]);
+  }, [id]);
 
   if (!workflow) return <div className="p-8 text-black">Loading...</div>;
 
@@ -42,7 +46,7 @@ const response = await api.get(`/api/workflow/getworkflowbyid/${params.id}`);   
     <div className="h-screen bg-gray-50 p-8">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-black text-xl">{workflow.name}</h1>
-        <button onClick={() => router.push("/workflows")} className="px-4 py-2 border border-gray-500 text-black">
+        <button onClick={() => router.push("/workflowsdashboard")} className="px-4 py-2 border border-gray-500 text-black">
           Back
         </button>
       </div>
