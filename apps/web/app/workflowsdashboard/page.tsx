@@ -52,7 +52,7 @@ useEffect(() => {
       setError(null)
       setLoading(true)
 
-      const response = await api.get<ApiResponse>("/getworkflow")
+      const response = await api.get<ApiResponse>("/api/workflow/getworkflow")
       const workflowdata = response.data.data.workflows
       setWorkflows(workflowdata)
 
