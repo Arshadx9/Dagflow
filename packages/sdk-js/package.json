@@ -1,6 +1,6 @@
 {
   "name": "@dagflo/sdk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Official SDK for DagFlo - Distributed Job Scheduler",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
