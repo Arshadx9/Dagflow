@@ -1,10 +1,7 @@
-
 "use client"
 import { useState } from "react"
 import axios from "axios";
 import { useRouter } from "next/navigation";
-
-
 
 type Step = {
   id: string
@@ -20,12 +17,9 @@ const api = axios.create({
 const CreateWorkflowsPage = () => {
 const router = useRouter();
 
-
   const [wfname, setWfname] = useState("")
 const [steps, setSteps] = useState<Step[]>([])
 const [error, setError] = useState<string | null>(null)
-
-
 
 const addstep = () => {
   const newstep : Step = {
@@ -35,6 +29,7 @@ dependsOn : []
   }
   setSteps([...steps , newstep])
 }
+
   const updateStepDependsOn = (id: string, value: string) => {
     setSteps(
       steps.map((step) =>
@@ -54,7 +49,7 @@ dependsOn : []
   const handleSubmit = async () => {
     try {
       setError(null);
-      await api.post("/createworkflow", { wfname, steps });
+      await api.post("/api/workflow/createworkflow", { wfname, steps });
       router.push("/workflowsdashboard");
     } catch (err) {
       if (axios.isAxiosError(err)) {
@@ -65,25 +60,24 @@ dependsOn : []
     }
   };
 
-
 	return (
 	    <div className="min-h-dvh bg-gray-50 flex flex-col justify-center items-center">
 
 	<div className=" p-6 text-black">
 			<h1 className="font-helvetica text-5xl tracking-tight">Create your Workflow</h1>
-		
 		</div>
-
 
         <div className="flex flex-col  justify-center items-center gap-3.5"  >
               <label className="text-black text-sm">Workflow Name</label>
 <input type="text" placeholder="eg : process order"  className="border text-black p-2 font-helvetica tracking-tighter w-2xl"
             value={wfname} onChange={(e)=>{setWfname(e.target.value)}}
 />
-<button  className="px-4 py-2 border text-black tracking-tight font-helvetica w-2xl"   onClick={addstep} >
+<button  className="px-4 py-2 border text-black tracking-tight font-helvetica w-2xl" onClick={addstep} >
     Add step 
 </button>
 </div>
+
+{error && <div className="text-red-500 mt-2">{error}</div>}
 
 <div className="flex flex-col gap-3 mt-6">
           {steps.map((step) => (
@@ -113,12 +107,7 @@ dependsOn : []
 </button>
 </div>
 
-        
-
-
-
         </div>
-	
 	)
 }
 
