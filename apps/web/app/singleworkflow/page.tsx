@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 type Step = {
@@ -23,7 +23,7 @@ const api = axios.create({
   withCredentials: true,
 });
 
-const SingleWorkflowPage = () => {
+const SingleWorkflowContent = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
@@ -31,6 +31,7 @@ const SingleWorkflowPage = () => {
 
   useEffect(() => {
     if (!id) return;
+    console.log('id from searchParams:', id);
     const fetchWorkflow = async () => {
       const response = await api.get(`/api/workflow/getworkflowbyid/${id}`);
       setWorkflow(response.data.data.workflow);
@@ -60,6 +61,14 @@ const SingleWorkflowPage = () => {
         ))}
       </div>
     </div>
+  );
+};
+
+const SingleWorkflowPage = () => {
+  return (
+    <Suspense fallback={<div className="p-8 text-black">Loading...</div>}>
+      <SingleWorkflowContent />
+    </Suspense>
   );
 };
 
