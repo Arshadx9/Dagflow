@@ -34,7 +34,7 @@ const SingleWorkflowContent = () => {
     console.log('id from searchParams:', id);
     const fetchWorkflow = async () => {
       const response = await api.get(`/api/workflow/getworkflowbyid/${id}`);
-      setWorkflow(response.data.data.workflow);
+      setWorkflow(response.data.data.workflows);
     };
     fetchWorkflow();
   }, [id]);
