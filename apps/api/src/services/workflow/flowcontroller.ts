@@ -2,21 +2,22 @@ import { NextFunction , Request , Response } from "express"
 import { thecreateWorkflow , thegetwfbyowner , thegetwfbyid ,theupdate , thedelete } from "./flowservice"
 import Apperror from "../../shared/utils/Apperror"
 import Responseformatter from "../../shared/utils/Responseformatter"
+
 export const createwfcontroller = async (req : Request , res : Response , next: NextFunction) => {
 
 try{
-const {wfname , steps} = req.body
+const {name , steps} = req.body
 const ownerId = req.userID 
 
 if(!ownerId){
     throw new Apperror(404 , "ownerID not provided")
 }
 
-await thecreateWorkflow(wfname , ownerId , steps)
+await thecreateWorkflow(name , ownerId , steps)
 
 res.status(200).json(
-    Responseformatter.success("Workflow creatd" , {
-        workflowname : wfname, 
+    Responseformatter.success("Workflow created" , {
+        workflowname : name, 
     })
 )
 
@@ -36,7 +37,6 @@ export const getwfcontroller = async (req : Request , res : Response , next: Nex
 
      const wf =  await thegetwfbyowner (ownerId)
 
-    
        res.status(200).json(
         Responseformatter.success("here are your workflows" , {
       workflows : wf
@@ -53,7 +53,6 @@ export const getwfbyidcontroller = async(req : Request , res : Response , next: 
 
 try{
     const id = req.params.id as string
-   
 
   const wfbid=   await thegetwfbyid(id)
 
