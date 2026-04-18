@@ -1,0 +1,14 @@
+{
+  "/(auth)/login/page": "app/(auth)/login/page.js",
+  "/(auth)/register/page": "app/(auth)/register/page.js",
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/createworkflows/page": "app/createworkflows/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/onboarding/page": "app/onboarding/page.js",
+  "/page": "app/page.js",
+  "/runs/[id]/page": "app/runs/[id]/page.js",
+  "/schedules/page": "app/schedules/page.js",
+  "/singleworkflow/page": "app/singleworkflow/page.js",
+  "/workflowsdashboard/page": "app/workflowsdashboard/page.js"
+}

@@ -1,0 +1,14 @@
+{
+  "/(auth)/login/page": "/login",
+  "/(auth)/register/page": "/register",
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/createworkflows/page": "/createworkflows",
+  "/favicon.ico/route": "/favicon.ico",
+  "/onboarding/page": "/onboarding",
+  "/page": "/",
+  "/runs/[id]/page": "/runs/[id]",
+  "/schedules/page": "/schedules",
+  "/singleworkflow/page": "/singleworkflow",
+  "/workflowsdashboard/page": "/workflowsdashboard"
+}
