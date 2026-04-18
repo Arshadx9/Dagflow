@@ -22,6 +22,7 @@ res.status(200).json(
 )
 
 } catch(error){
+    console.error('Create workflow error:', error)
     next(error)
 }
 
