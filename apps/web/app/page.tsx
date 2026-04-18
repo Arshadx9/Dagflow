@@ -32,9 +32,11 @@ export default function Home() {
 
 <div className="flex gap-4  items-start p-4  ">
 
-  <button  className=" px-4 py-2 rounded-lg bg-gray-100 border text-black font-mono tracking-tighter " >
-Start for free
+ <Link href="/login">
+  <button className="px-4 py-2 rounded-lg bg-gray-100 border text-black font-mono tracking-tighter">
+    Login
   </button>
+</Link>
 <Link href="/register" >
   <button  className=" px-4 py-2 rounded-lg bg-gray-100 border text-black font-mono tracking-tighter " >
 Register
