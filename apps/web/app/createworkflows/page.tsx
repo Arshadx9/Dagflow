@@ -55,7 +55,7 @@ dependsOn : []
     try {
       setError(null);
       await api.post("/createworkflow", { wfname, steps });
-      router.push("/workflows");
+      router.push("/workflowsdashboard");
     } catch (err) {
       if (axios.isAxiosError(err)) {
         setError(err.response?.data?.message || "Failed to create workflow");
