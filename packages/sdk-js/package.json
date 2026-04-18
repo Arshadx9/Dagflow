@@ -1,18 +1,13 @@
 {
   "name": "@dagflo/sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Official SDK for DagFlo - Distributed Job Scheduler",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc"
   },
-  "keywords": [
-    "workflow",
-    "job-scheduler",
-    "dag",
-    "dagflo"
-  ],
+  "keywords": ["workflow", "job-scheduler", "dag", "dagflo"],
   "author": "your name",
   "license": "ISC",
   "dependencies": {
