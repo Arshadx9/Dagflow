@@ -9,16 +9,14 @@ static success (message : string, data : any = null){
     }
 }
 
-static error (message : string , data : any = null ){
+static error (data : any = null ){
     return {
         success : false ,
-        message : "something went wrong ", 
+       
         data : data 
     }
 }
 
-
-
-
-
 }
+
+export default Responseformatter

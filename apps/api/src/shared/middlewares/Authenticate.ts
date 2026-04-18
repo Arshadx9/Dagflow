@@ -19,9 +19,9 @@ const authenticate = (req : Request , res : Response , next : NextFunction) => {
     }
 
     try{
-        const decodedtoken = Securityutil.verifyToken(token) as {userID : string}
+        const decodedtoken = Securityutil.verifyToken(token) as {userId : string}
 
-        req.userID = decodedtoken.userID
+        req.userID = decodedtoken.userId
 
         next()
 

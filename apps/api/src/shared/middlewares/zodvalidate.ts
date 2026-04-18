@@ -1,4 +1,4 @@
-import { NextFunction } from "express"
+import { NextFunction , Request , Response} from "express"
 import z from "zod"
 import Apperror from "../utils/Apperror"
 
@@ -9,7 +9,7 @@ const ZodValidate = (schema : z.ZodSchema) =>{
 
   if(!result.success){
         const message = result.error.issues[0]?.message??"Validation error"
-        throw new Apperror(500 ,message)
+        throw new Apperror(400 ,message)
   }
 
 next()
