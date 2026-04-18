@@ -9,9 +9,8 @@ const flowrouter=  Router()
 
 flowrouter.post("/createworkflow" , authenticate ,ZodValidate(workflowschema) ,createwfcontroller )
 flowrouter.get("/getworkflow" , authenticate , getwfcontroller)
-flowrouter.get("/getworkflowbyid:id" , authenticate , getwfbyidcontroller)
-flowrouter.put("/updatewf:id" , authenticate, ZodValidate(updateschema) ,  updatecontroller )
-flowrouter.delete("/deletewf:id" , authenticate ,  deletecontroller )
+flowrouter.get("/getworkflowbyid/:id" , authenticate , getwfbyidcontroller)
+flowrouter.put("/updatewf/:id" , authenticate, ZodValidate(updateschema) ,  updatecontroller )
+flowrouter.delete("/deletewf/:id" , authenticate ,  deletecontroller )
 
 export default flowrouter
-
