@@ -1,5 +1,5 @@
 {
-  "name": "@dagflo/sdk",
+  "name": "@dagflo/api",
   "version": "1.0.1",
   "description": "Official SDK for DagFlo - Distributed Job Scheduler",
   "main": "dist/index.js",
