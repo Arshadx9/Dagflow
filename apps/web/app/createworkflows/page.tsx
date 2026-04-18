@@ -49,7 +49,14 @@ dependsOn : []
   const handleSubmit = async () => {
     try {
       setError(null);
-      await api.post("/api/workflow/createworkflow", { wfname, steps });
+      await api.post("/api/workflow/createworkflow", { 
+        name: wfname, 
+        steps: steps.map(step => ({
+          id: step.id,
+          name: step.id,
+          dependsOn: step.dependsOn
+        }))
+      });
       router.push("/workflowsdashboard");
     } catch (err) {
       if (axios.isAxiosError(err)) {
