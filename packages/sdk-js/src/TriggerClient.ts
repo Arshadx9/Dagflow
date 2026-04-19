@@ -32,7 +32,7 @@ async trigger(workflowid : string , options : TriggerOptions = {}) : Promise <Tr
 
     if(!workflowid) throw new Error("workflowid required")
 
-        const url = `${this.baseUrl}/api/runs/${workflowid}/trigger`
+        const url = `${this.baseUrl}/api/run/${workflowid}/trigger`
 
         const response = await this.circuitbreaker.execute(()=>{
           return  axios.post<TriggerApiResponse >(url, {input : options.input} , {
