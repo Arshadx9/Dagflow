@@ -5,7 +5,6 @@ import apikeyauthenticate from "../../shared/middlewares/ApiKeyAuthenticate";
 
 const runrouter = Router()
 
-runrouter.post("/:id/trigger" , authenticate , triggerruncontroller)
 runrouter.get("/:id/getallrunsforthisworkflow" , authenticate ,getrunscontroller)
 runrouter.get("/:id/getspecificrun" , authenticate , getrunbyidcontroller)
 runrouter.post("/:id/cancelrun" , authenticate , cancelruncontroller)
@@ -14,4 +13,5 @@ runrouter.post("/:id/trigger", apikeyauthenticate, triggerruncontroller)
 
 
 export default runrouter 
+
 
