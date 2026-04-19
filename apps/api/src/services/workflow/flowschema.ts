@@ -6,8 +6,13 @@ export const workflowschema = z.object({
         z.object({
              id: z.string(),
              name : z.string(),
-             dependsOn : z.array(z.string())
-
+             dependsOn : z.array(z.string()),
+             config: z.object({
+               url: z.string(),
+               method: z.enum(["GET", "POST", "PUT", "DELETE"]),
+               body: z.any().optional(),
+               headers: z.any().optional()
+             }).optional()
         })
      )
 })
@@ -18,9 +23,13 @@ export const updateschema = z.object({
         z.object({
              id: z.string(),
              name : z.string(),
-             dependsOn : z.array(z.string())
-
+             dependsOn : z.array(z.string()),
+             config: z.object({
+               url: z.string(),
+               method: z.enum(["GET", "POST", "PUT", "DELETE"]),
+               body: z.any().optional(),
+               headers: z.any().optional()
+             }).optional()
         })
      )
-
 })
