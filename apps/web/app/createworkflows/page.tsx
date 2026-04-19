@@ -7,6 +7,10 @@ type Step = {
   id: string
   type: "http" 
   dependsOn: string[]
+  config: {
+    url: string
+    method: "GET" | "POST" | "PUT" | "DELETE"
+  }
 }
 
 const api = axios.create({
@@ -23,9 +27,13 @@ const [error, setError] = useState<string | null>(null)
 
 const addstep = () => {
   const newstep : Step = {
-id  :`step-${steps.length + 1}`,
-type : "http",
-dependsOn : []
+    id: `step-${steps.length + 1}`,
+    type: "http",
+    dependsOn: [],
+    config: {
+      url: "",
+      method: "POST"
+    }
   }
   setSteps([...steps , newstep])
 }
@@ -46,6 +54,22 @@ dependsOn : []
     );
   };
 
+  const updateStepUrl = (id: string, url: string) => {
+    setSteps(
+      steps.map((step) =>
+        step.id === id ? { ...step, config: { ...step.config, url } } : step
+      )
+    );
+  };
+
+  const updateStepMethod = (id: string, method: "GET" | "POST" | "PUT" | "DELETE") => {
+    setSteps(
+      steps.map((step) =>
+        step.id === id ? { ...step, config: { ...step.config, method } } : step
+      )
+    );
+  };
+
   const handleSubmit = async () => {
     try {
       setError(null);
@@ -54,7 +78,8 @@ dependsOn : []
         steps: steps.map(step => ({
           id: step.id,
           name: step.id,
-          dependsOn: step.dependsOn
+          dependsOn: step.dependsOn,
+          config: step.config
         }))
       });
       router.push("/workflowsdashboard");
@@ -74,12 +99,12 @@ dependsOn : []
 			<h1 className="font-helvetica text-5xl tracking-tight">Create your Workflow</h1>
 		</div>
 
-        <div className="flex flex-col  justify-center items-center gap-3.5"  >
+        <div className="flex flex-col justify-center items-center gap-3.5">
               <label className="text-black text-sm">Workflow Name</label>
-<input type="text" placeholder="eg : process order"  className="border text-black p-2 font-helvetica tracking-tighter w-2xl"
+<input type="text" placeholder="eg : process order" className="border text-black p-2 font-helvetica tracking-tighter w-2xl"
             value={wfname} onChange={(e)=>{setWfname(e.target.value)}}
 />
-<button  className="px-4 py-2 border text-black tracking-tight font-helvetica w-2xl" onClick={addstep} >
+<button className="px-4 py-2 border text-black tracking-tight font-helvetica w-2xl" onClick={addstep}>
     Add step 
 </button>
 </div>
@@ -90,26 +115,41 @@ dependsOn : []
           {steps.map((step) => (
             <div
               key={step.id}
-              className="flex items-center gap-4 border border-black p-3"
+              className="flex flex-col gap-2 border border-black p-3"
             >
-              <span className="text-black text-sm font-helvetica">{step.id}</span>
+              <span className="text-black text-sm font-helvetica font-bold">{step.id}</span>
               <input
                 type="text"
-                placeholder="depends on (e.g. step-1, step-2)"
+                placeholder="depends on (e.g. step-1, step-2) — leave empty for first step"
                 onChange={(e) => updateStepDependsOn(step.id, e.target.value)}
-                className="border border-black bg-white p-2 text-black text-sm w-64 font-helvetica"
+                className="border border-black bg-white p-2 text-black text-sm font-helvetica"
               />
+              <input
+                type="text"
+                placeholder="URL (e.g. https://your-api.com/steps/validate-payment)"
+                onChange={(e) => updateStepUrl(step.id, e.target.value)}
+                className="border border-black bg-white p-2 text-black text-sm font-helvetica"
+              />
+              <select
+                onChange={(e) => updateStepMethod(step.id, e.target.value as "GET" | "POST" | "PUT" | "DELETE")}
+                className="border border-black bg-white p-2 text-black text-sm font-helvetica"
+              >
+                <option value="POST">POST</option>
+                <option value="GET">GET</option>
+                <option value="PUT">PUT</option>
+                <option value="DELETE">DELETE</option>
+              </select>
             </div>
           ))}
         </div>
 
-<div className="flex  justify-center items-center gap-3.5 mt-4">
-<button  className="px-4 py-2 border-2 text-black tracking-tight font-helvetica "   onClick={handleSubmit} >
+<div className="flex justify-center items-center gap-3.5 mt-4">
+<button className="px-4 py-2 border-2 text-black tracking-tight font-helvetica" onClick={handleSubmit}>
   submit
 </button>
-<button  className="px-4 py-2 border-2 text-black tracking-tight font-helvetica" 
+<button className="px-4 py-2 border-2 text-black tracking-tight font-helvetica" 
     onClick={() => router.push("/workflowsdashboard")}
- >
+>
  cancel 
 </button>
 </div>
