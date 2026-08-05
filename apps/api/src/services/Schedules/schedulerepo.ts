@@ -1,5 +1,5 @@
 import prisma from "../../shared/utils/Prisma" 
-import { ScheduleStatus } from "@prisma/client"
+import { ScheduleStatus } from "../../generated/prisma/client"
 
 
 

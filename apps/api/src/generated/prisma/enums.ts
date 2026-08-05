@@ -13,7 +13,8 @@ export const Status = {
   FINISHED: 'FINISHED',
   FAILED: 'FAILED',
   PENDING: 'PENDING',
-  RUNNING: 'RUNNING'
+  RUNNING: 'RUNNING',
+  RETRYING: 'RETRYING'
 } as const
 
 export type Status = (typeof Status)[keyof typeof Status]

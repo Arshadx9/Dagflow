@@ -1,5 +1,5 @@
 import { Queue } from "bullmq"
-import { Status, type Schedule } from "@prisma/client"
+import { Status, type Schedule } from "../../generated/prisma/client"
 import redisConnection from "../../shared/config/redis"
 import prisma from "../../shared/utils/Prisma"
 

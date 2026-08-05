@@ -4,7 +4,7 @@ import { getlatestversion, getworkflowbyid } from "../workflow/flowrepo"
 import { createjobrun, createsteprun ,getrunbyid,getrunbywfid , updatejobrunstatus ,getsteprunbyjobrun , updatesteprunstatus} from "./runrepo"
 import { Queue } from "bullmq"
 import redisConnection from "../../shared/config/redis"
-import { Status } from "@prisma/client"
+import { Status } from "../../generated/prisma/client"
 
 export const triggerrun = async (wfid : string , input : any ) => {
 

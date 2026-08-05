@@ -1,4 +1,4 @@
-import { Status } from "@prisma/client"
+import { Status } from "../../generated/prisma/client"
 import { executeHttpStep } from "../handlers/httpStepHandler"
 import prisma from "../../shared/utils/Prisma"
 import { dagresolve } from "./dagresolver"
@@ -36,7 +36,7 @@ export const stepexecutor = async (jobdata: jobdata) => {
 			}
 		}
 	} catch (error) {
-		await UpdateStepRunStatus(jobdata.stepRunId, Status.FAILED)
+		await UpdateStepRunStatus(jobdata.stepRunId, Status.RETRYING)
 		await UpdateStepError(jobdata.stepRunId, "failed")
 
 		const stepRun = await prisma.stepRun.findFirst({

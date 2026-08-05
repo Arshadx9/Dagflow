@@ -1,4 +1,4 @@
-import { Status } from "@prisma/client"
+import { Status } from "../../generated/prisma/client"
 import { defaultjobs } from "../queue/queueconfig"
 import { pushtoqueue } from "../queue/producer"
 import { Jobrunendtime, JobRunStatus, UpdateStepRunStatus } from "./statemanager"

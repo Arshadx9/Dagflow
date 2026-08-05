@@ -1,6 +1,6 @@
 import Apperror from "../../shared/utils/Apperror"
 import { createschedule , deleteschedulerepo, getschedulebyowner, updateschedule } from "./schedulerepo"
-import { ScheduleStatus } from "@prisma/client"
+import { ScheduleStatus } from "../../generated/prisma/client"
 
 export const createSchedule = async (workflowId: string, cron: string) => {
     

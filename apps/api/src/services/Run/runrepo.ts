@@ -1,4 +1,4 @@
-import { Status } from "@prisma/client"
+import { Status } from "../../generated/prisma/client"
 import prisma from "../../shared/utils/Prisma"
 
 export const createjobrun =  async (wfid : string , vid : string , input : any , status : string ) => {

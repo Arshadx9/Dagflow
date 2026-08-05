@@ -1,5 +1,5 @@
 import { parseExpression } from "cron-parser"
-import { ScheduleStatus } from "@prisma/client"
+import { ScheduleStatus } from "../../generated/prisma/client"
 import prisma from "../../shared/utils/Prisma"
 import { triggerdispatch } from "./triggerdispatch"
 
@@ -35,7 +35,6 @@ export const cronpoller = () => {
 			}
 		} catch (error) {
 			console.error("Scheduler polling error:", error)
-			// Continue polling despite errors, will retry next cycle
 		}
 	}, 60 * 1000)
 
