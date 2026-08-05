@@ -1,7 +1,7 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../generated/prisma"
+  output   = "../apps/api/src/generated/prisma"
 }
 
 datasource db {
@@ -12,6 +12,7 @@ enum Status {
   FAILED 
   PENDING 
   RUNNING
+  RETRYING
 }
 
 enum ScheduleStatus{
