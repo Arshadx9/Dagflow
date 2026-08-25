@@ -30,6 +30,7 @@ model Bizowner{
   username String @unique
   password String 
   createdAt DateTime @default(now())
+  hasOnboarded Boolean  @default(false) 
   workflows WorkflowMain[]
   apikey ApiKey[]
 }

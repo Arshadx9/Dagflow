@@ -80,7 +80,8 @@ export const BizownerScalarFieldEnum = {
   ownerId: 'ownerId',
   username: 'username',
   password: 'password',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  hasOnboarded: 'hasOnboarded'
 } as const
 
 export type BizownerScalarFieldEnum = (typeof BizownerScalarFieldEnum)[keyof typeof BizownerScalarFieldEnum]

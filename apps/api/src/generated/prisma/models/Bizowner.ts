@@ -29,6 +29,7 @@ export type BizownerMinAggregateOutputType = {
   username: string | null
   password: string | null
   createdAt: Date | null
+  hasOnboarded: boolean | null
 }
 
 export type BizownerMaxAggregateOutputType = {
@@ -36,6 +37,7 @@ export type BizownerMaxAggregateOutputType = {
   username: string | null
   password: string | null
   createdAt: Date | null
+  hasOnboarded: boolean | null
 }
 
 export type BizownerCountAggregateOutputType = {
@@ -43,6 +45,7 @@ export type BizownerCountAggregateOutputType = {
   username: number
   password: number
   createdAt: number
+  hasOnboarded: number
   _all: number
 }
 
@@ -52,6 +55,7 @@ export type BizownerMinAggregateInputType = {
   username?: true
   password?: true
   createdAt?: true
+  hasOnboarded?: true
 }
 
 export type BizownerMaxAggregateInputType = {
@@ -59,6 +63,7 @@ export type BizownerMaxAggregateInputType = {
   username?: true
   password?: true
   createdAt?: true
+  hasOnboarded?: true
 }
 
 export type BizownerCountAggregateInputType = {
@@ -66,6 +71,7 @@ export type BizownerCountAggregateInputType = {
   username?: true
   password?: true
   createdAt?: true
+  hasOnboarded?: true
   _all?: true
 }
 
@@ -146,6 +152,7 @@ export type BizownerGroupByOutputType = {
   username: string
   password: string
   createdAt: Date
+  hasOnboarded: boolean
   _count: BizownerCountAggregateOutputType | null
   _min: BizownerMinAggregateOutputType | null
   _max: BizownerMaxAggregateOutputType | null
@@ -174,6 +181,7 @@ export type BizownerWhereInput = {
   username?: Prisma.StringFilter<"Bizowner"> | string
   password?: Prisma.StringFilter<"Bizowner"> | string
   createdAt?: Prisma.DateTimeFilter<"Bizowner"> | Date | string
+  hasOnboarded?: Prisma.BoolFilter<"Bizowner"> | boolean
   workflows?: Prisma.WorkflowMainListRelationFilter
   apikey?: Prisma.ApiKeyListRelationFilter
 }
@@ -183,6 +191,7 @@ export type BizownerOrderByWithRelationInput = {
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  hasOnboarded?: Prisma.SortOrder
   workflows?: Prisma.WorkflowMainOrderByRelationAggregateInput
   apikey?: Prisma.ApiKeyOrderByRelationAggregateInput
 }
@@ -195,6 +204,7 @@ export type BizownerWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.BizownerWhereInput | Prisma.BizownerWhereInput[]
   password?: Prisma.StringFilter<"Bizowner"> | string
   createdAt?: Prisma.DateTimeFilter<"Bizowner"> | Date | string
+  hasOnboarded?: Prisma.BoolFilter<"Bizowner"> | boolean
   workflows?: Prisma.WorkflowMainListRelationFilter
   apikey?: Prisma.ApiKeyListRelationFilter
 }, "ownerId" | "username">
@@ -204,6 +214,7 @@ export type BizownerOrderByWithAggregationInput = {
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  hasOnboarded?: Prisma.SortOrder
   _count?: Prisma.BizownerCountOrderByAggregateInput
   _max?: Prisma.BizownerMaxOrderByAggregateInput
   _min?: Prisma.BizownerMinOrderByAggregateInput
@@ -217,6 +228,7 @@ export type BizownerScalarWhereWithAggregatesInput = {
   username?: Prisma.StringWithAggregatesFilter<"Bizowner"> | string
   password?: Prisma.StringWithAggregatesFilter<"Bizowner"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Bizowner"> | Date | string
+  hasOnboarded?: Prisma.BoolWithAggregatesFilter<"Bizowner"> | boolean
 }
 
 export type BizownerCreateInput = {
@@ -224,6 +236,7 @@ export type BizownerCreateInput = {
   username: string
   password: string
   createdAt?: Date | string
+  hasOnboarded?: boolean
   workflows?: Prisma.WorkflowMainCreateNestedManyWithoutBizInput
   apikey?: Prisma.ApiKeyCreateNestedManyWithoutBizInput
 }
@@ -233,6 +246,7 @@ export type BizownerUncheckedCreateInput = {
   username: string
   password: string
   createdAt?: Date | string
+  hasOnboarded?: boolean
   workflows?: Prisma.WorkflowMainUncheckedCreateNestedManyWithoutBizInput
   apikey?: Prisma.ApiKeyUncheckedCreateNestedManyWithoutBizInput
 }
@@ -242,6 +256,7 @@ export type BizownerUpdateInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hasOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   workflows?: Prisma.WorkflowMainUpdateManyWithoutBizNestedInput
   apikey?: Prisma.ApiKeyUpdateManyWithoutBizNestedInput
 }
@@ -251,6 +266,7 @@ export type BizownerUncheckedUpdateInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hasOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   workflows?: Prisma.WorkflowMainUncheckedUpdateManyWithoutBizNestedInput
   apikey?: Prisma.ApiKeyUncheckedUpdateManyWithoutBizNestedInput
 }
@@ -260,6 +276,7 @@ export type BizownerCreateManyInput = {
   username: string
   password: string
   createdAt?: Date | string
+  hasOnboarded?: boolean
 }
 
 export type BizownerUpdateManyMutationInput = {
@@ -267,6 +284,7 @@ export type BizownerUpdateManyMutationInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hasOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type BizownerUncheckedUpdateManyInput = {
@@ -274,6 +292,7 @@ export type BizownerUncheckedUpdateManyInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hasOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type BizownerCountOrderByAggregateInput = {
@@ -281,6 +300,7 @@ export type BizownerCountOrderByAggregateInput = {
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  hasOnboarded?: Prisma.SortOrder
 }
 
 export type BizownerMaxOrderByAggregateInput = {
@@ -288,6 +308,7 @@ export type BizownerMaxOrderByAggregateInput = {
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  hasOnboarded?: Prisma.SortOrder
 }
 
 export type BizownerMinOrderByAggregateInput = {
@@ -295,6 +316,7 @@ export type BizownerMinOrderByAggregateInput = {
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  hasOnboarded?: Prisma.SortOrder
 }
 
 export type BizownerScalarRelationFilter = {
@@ -308,6 +330,10 @@ export type StringFieldUpdateOperationsInput = {
 
 export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
 }
 
 export type BizownerCreateNestedOneWithoutWorkflowsInput = {
@@ -343,6 +369,7 @@ export type BizownerCreateWithoutWorkflowsInput = {
   username: string
   password: string
   createdAt?: Date | string
+  hasOnboarded?: boolean
   apikey?: Prisma.ApiKeyCreateNestedManyWithoutBizInput
 }
 
@@ -351,6 +378,7 @@ export type BizownerUncheckedCreateWithoutWorkflowsInput = {
   username: string
   password: string
   createdAt?: Date | string
+  hasOnboarded?: boolean
   apikey?: Prisma.ApiKeyUncheckedCreateNestedManyWithoutBizInput
 }
 
@@ -375,6 +403,7 @@ export type BizownerUpdateWithoutWorkflowsInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hasOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   apikey?: Prisma.ApiKeyUpdateManyWithoutBizNestedInput
 }
 
@@ -383,6 +412,7 @@ export type BizownerUncheckedUpdateWithoutWorkflowsInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hasOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   apikey?: Prisma.ApiKeyUncheckedUpdateManyWithoutBizNestedInput
 }
 
@@ -391,6 +421,7 @@ export type BizownerCreateWithoutApikeyInput = {
   username: string
   password: string
   createdAt?: Date | string
+  hasOnboarded?: boolean
   workflows?: Prisma.WorkflowMainCreateNestedManyWithoutBizInput
 }
 
@@ -399,6 +430,7 @@ export type BizownerUncheckedCreateWithoutApikeyInput = {
   username: string
   password: string
   createdAt?: Date | string
+  hasOnboarded?: boolean
   workflows?: Prisma.WorkflowMainUncheckedCreateNestedManyWithoutBizInput
 }
 
@@ -423,6 +455,7 @@ export type BizownerUpdateWithoutApikeyInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hasOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   workflows?: Prisma.WorkflowMainUpdateManyWithoutBizNestedInput
 }
 
@@ -431,6 +464,7 @@ export type BizownerUncheckedUpdateWithoutApikeyInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hasOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   workflows?: Prisma.WorkflowMainUncheckedUpdateManyWithoutBizNestedInput
 }
 
@@ -479,6 +513,7 @@ export type BizownerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   username?: boolean
   password?: boolean
   createdAt?: boolean
+  hasOnboarded?: boolean
   workflows?: boolean | Prisma.Bizowner$workflowsArgs<ExtArgs>
   apikey?: boolean | Prisma.Bizowner$apikeyArgs<ExtArgs>
   _count?: boolean | Prisma.BizownerCountOutputTypeDefaultArgs<ExtArgs>
@@ -489,6 +524,7 @@ export type BizownerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   username?: boolean
   password?: boolean
   createdAt?: boolean
+  hasOnboarded?: boolean
 }, ExtArgs["result"]["bizowner"]>
 
 export type BizownerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -496,6 +532,7 @@ export type BizownerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   username?: boolean
   password?: boolean
   createdAt?: boolean
+  hasOnboarded?: boolean
 }, ExtArgs["result"]["bizowner"]>
 
 export type BizownerSelectScalar = {
@@ -503,9 +540,10 @@ export type BizownerSelectScalar = {
   username?: boolean
   password?: boolean
   createdAt?: boolean
+  hasOnboarded?: boolean
 }
 
-export type BizownerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"ownerId" | "username" | "password" | "createdAt", ExtArgs["result"]["bizowner"]>
+export type BizownerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"ownerId" | "username" | "password" | "createdAt" | "hasOnboarded", ExtArgs["result"]["bizowner"]>
 export type BizownerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   workflows?: boolean | Prisma.Bizowner$workflowsArgs<ExtArgs>
   apikey?: boolean | Prisma.Bizowner$apikeyArgs<ExtArgs>
@@ -525,6 +563,7 @@ export type $BizownerPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     username: string
     password: string
     createdAt: Date
+    hasOnboarded: boolean
   }, ExtArgs["result"]["bizowner"]>
   composites: {}
 }
@@ -954,6 +993,7 @@ export interface BizownerFieldRefs {
   readonly username: Prisma.FieldRef<"Bizowner", 'String'>
   readonly password: Prisma.FieldRef<"Bizowner", 'String'>
   readonly createdAt: Prisma.FieldRef<"Bizowner", 'DateTime'>
+  readonly hasOnboarded: Prisma.FieldRef<"Bizowner", 'Boolean'>
 }
     
 

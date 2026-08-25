@@ -385,10 +385,6 @@ export type WorkflowMainUncheckedUpdateManyWithoutBizNestedInput = {
   deleteMany?: Prisma.WorkflowMainScalarWhereInput | Prisma.WorkflowMainScalarWhereInput[]
 }
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
 export type WorkflowMainCreateNestedOneWithoutWfvInput = {
   create?: Prisma.XOR<Prisma.WorkflowMainCreateWithoutWfvInput, Prisma.WorkflowMainUncheckedCreateWithoutWfvInput>
   connectOrCreate?: Prisma.WorkflowMainCreateOrConnectWithoutWfvInput
