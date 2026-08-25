@@ -85,7 +85,7 @@ useEffect(() => {
 
 
 return(
-    <div className="h-screen min-w-screen bg-gray-50">
+  <div className="min-h-screen min-w-screen bg-gray-50 pb-4">
 
 
 <div className="flex justify-between p-4 items-center bg-gray-100 m-4 border border-gray-500 "  >
@@ -94,6 +94,18 @@ return(
     <button className="px-4 py-2 border text-black tracking-tight" onClick={()=>{  router.push("/createworkflows")}} >Create workflow </button>
 </div>
 </div>
+
+{loading && (
+  <div className="m-4 border border-gray-500 bg-gray-100 p-4 text-black">
+    Loading workflows...
+  </div>
+)}
+
+{error && (
+  <div className="m-4 border border-gray-500 bg-gray-100 p-4 text-black">
+    {error}
+  </div>
+)}
 
 
 {workflows.map((wf) => (
