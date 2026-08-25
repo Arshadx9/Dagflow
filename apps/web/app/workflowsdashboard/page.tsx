@@ -85,7 +85,7 @@ useEffect(() => {
 
 
 return(
-  <div className="min-h-screen min-w-screen bg-gray-50 pb-4">
+  <div className="min-h-screen min-w-screen bg-gray-100 pb-4">
 
 
 <div className="flex justify-between p-4 items-center bg-gray-100 m-4 border border-gray-500 "  >
